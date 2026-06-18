@@ -12,7 +12,7 @@ What kind of changes does this PR introduce?
 
 ## Description
 Describe the purpose of this pull request.
-## Why we need this change?
+## Why do we need this change?
 Describe the reason of changes
 ## Tests
 How did you test these changes, and what was the result?
@@ -20,5 +20,5 @@ How did you test these changes, and what was the result?
 ## Self check
 
 - [ ] Self-review
-- [ ] Linters where launched localy and everithing OK
+- [ ] Linters where launched locally and everything OK
 - [ ] Documentation updated

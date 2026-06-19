@@ -11,12 +11,12 @@ vms:
   ip_suffix: 12
   mem: 2048
   cpus: 2
-  script: "script.sh"
+  script: "provisioning/web/install.sh"
 - name: "node-3"
   ip_suffix: 13
   mem: 2048
   cpus: 2
-  script: "script.sh"
+  script: "provisioning/web/install.sh"
 - name: "node-4"
   ip_suffix: 14
   mem: 4096

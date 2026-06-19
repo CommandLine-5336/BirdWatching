@@ -30,7 +30,25 @@ source .venv/bin/activate
 pip install flask 
 chmod +x /home/vagrant/Bird1
 chmod +x /home/vagrant/Bird1/static
+sudo cat << 'EOF' > /etc/systemd/system/bird1.service
+[Unit]
+Description=Flask Bird1 Application
+After=network.target
+
+[Service]
+User=vagrant
+WorkingDirectory=/home/vagrant/Bird1
+ExecStart=/home/vagrant/Bird1/.venv/bin/python hello.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOF
+sudo systemctl daemon-reload
+sudo systemctl start bird1
+sudo systemctl enable bird1
+sudo systemctl daemon-reload
 sudo systemctl start nginx
 sudo systemctl stop nginx
 sudo systemctl start nginx
-nohup python3 hello.py &
+

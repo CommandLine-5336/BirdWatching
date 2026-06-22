@@ -6,7 +6,7 @@ vms:
   ip_suffix: 11
   mem: 1024
   cpus: 1
-  script: "script.sh"
+  script: "provisioning/balancer/install.sh"
 - name: "web01"
   ip_suffix: 12
   mem: 2048

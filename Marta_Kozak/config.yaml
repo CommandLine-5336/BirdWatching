@@ -1,0 +1,24 @@
+subnet: "192.168.56."
+box_name: "net9/ubuntu-24.04-arm64"
+
+vms:
+- name: "balancer"
+  ip_suffix: 11
+  mem: 1024
+  cpus: 1
+  script: "script.sh"
+- name: "web01"
+  ip_suffix: 12
+  mem: 2048
+  cpus: 2
+  script: "script.sh"
+- name: "web02"
+  ip_suffix: 13
+  mem: 2048
+  cpus: 2
+  script: "script.sh"
+- name: "db"
+  ip_suffix: 14
+  mem: 4096
+  cpus: 2
+  script: "script.sh"

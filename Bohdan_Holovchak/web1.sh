@@ -47,5 +47,4 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl start bird1
 sudo systemctl enable bird1
-sudo systemctl daemon-reload
 sudo systemctl reload nginx

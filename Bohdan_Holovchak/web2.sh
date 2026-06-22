@@ -48,6 +48,4 @@ sudo systemctl daemon-reload
 sudo systemctl start bird2
 sudo systemctl enable bird2
 sudo systemctl daemon-reload
-sudo systemctl start nginx
-sudo systemctl stop nginx
-sudo systemctl start nginx
+sudo systemctl reload nginx

@@ -5,24 +5,28 @@ Vagrant.configure("2") do |config|
   config.vm.define "web1" do |web1|
     web1.vm.box = "ubuntu/bionic64"
     web1.vm.box_version = "20230607.0.5"
-    web1.vm.network "public_network", ip: "192.168.1.11", bridge: "enp4s0"
+    web1.vm.network "private_network", ip: "192.168.56.11"
     web1.vm.provision :shell, path: "web1.sh"
+    web1.vm.network :forwarded_port, host: 4566, guest: 80
   end
     config.vm.define "web2" do |web2|
     web2.vm.box = "ubuntu/bionic64"
     web2.vm.box_version = "20230607.0.5"
-    web2.vm.network "public_network", ip: "192.168.1.12", bridge: "enp4s0"
+    web2.vm.network "private_network", ip: "192.168.56.12"
     web2.vm.provision :shell, path: "web2.sh"
+    web2.vm.network :forwarded_port, host: 4567, guest: 80
   end
     config.vm.define "lb" do |lb|
     lb.vm.box = "ubuntu/bionic64"
     lb.vm.box_version = "20230607.0.5"
-    lb.vm.network "public_network", ip: "192.168.1.13", bridge: "enp4s0"
+    lb.vm.network "private_network", ip: "192.168.56.13"
     lb.vm.network :forwarded_port, host: 4568, guest: 80
+    lb.vm.provision :shell, path: "lb.sh"
   end
     config.vm.define "db" do |db|
     db.vm.box = "ubuntu/bionic64"
     db.vm.box_version = "20230607.0.5"
-    db.vm.network "public_network", ip: "192.168.1.14", bridge: "enp4s0"
+    db.vm.network "private_network", ip: "192.168.56.14"
+    db.vm.provision :shell, path: "db.sh"
   end
 end 

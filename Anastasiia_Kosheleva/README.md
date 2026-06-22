@@ -1,6 +1,1 @@
-﻿# Load Balancer Configuration
-
-* File: lb.sh
-* Role: Nginx Load Balancer (Reverse Proxy).
-* Upstream: web_servers (192.168.56.11, 192.168.56.12).
-* Execution: sudo bash lb.sh
+This project deploys a multi-node local environment. Created using Vagrant, featuring two Flask backend instances, a MariaDB database, and an Nginx reverse proxy. The infrastructure is orchestrated via a Vagrantfile and provisioned using a dedicated bash script (`lb.sh`) to configure the load balancer.

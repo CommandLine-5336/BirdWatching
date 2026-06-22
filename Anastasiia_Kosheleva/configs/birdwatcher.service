@@ -1,5 +1,5 @@
 [Unit]
-Description=Birdwatcher App
+Description=Birdwatcher Flask Application Service
 After=network.target
 
 [Service]

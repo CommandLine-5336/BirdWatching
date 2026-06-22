@@ -3,17 +3,15 @@
 Vagrant project for a birdwatching webapp
 
 ## Requirements 
-* Vagrant 
+* Vagrant 2.4.9 
 
 ## Installing / Getting started
 
-
-* Vagrant init in the folder with the vagrant file 
-* set USERNAME and PASSWORD for DB 
-* Vagrant up in the main folder with the file
+* Type vagrant init bash command while being inside of the folder with the Vagrant file 
+* set USERNAME and PASSWORD for DB inside the db.sh file
+* Type vagrant up command in bash while bing inside of the folder with the Vagrant file
 
 ## Features
 
-What's all the bells and whistles this project can perform?
 * Creates 4 VMs (1 Load Balancer, 2 Web servers, 1 Data Base)
 * Working website at LB ip 

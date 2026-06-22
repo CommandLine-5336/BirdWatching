@@ -21,4 +21,4 @@ vms:
   ip_suffix: 14
   mem: 4096
   cpus: 2
-  script: "script.sh"
+  script: "provisioning/db/install.sh"

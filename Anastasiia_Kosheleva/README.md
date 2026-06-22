@@ -1,17 +1,1 @@
-# Infrastructure Configuration
-
-* **Tool:** Vagrant (VirtualBox provider)
-* **OS Node Base:** Ubuntu 24.04 LTS (Noble)
-* **Architecture:** Multi-node local environment
-  * `loadbalancer`: Nginx reverse proxy
-  * `web1`: Flask backend instance (Port 5000)
-  * `web2`: Flask backend instance (Port 5000)
-  * `db`: MariaDB database node (Port 3306)
-
-* **Components:**
-  * `Vagrantfile`: Defines CPU/RAM resource allocation, private networks, and link provisioning scripts.
-  * `.gitignore`: Prevents indexing of `.vagrant/` state directory and local Python virtual environments.
-
-* **Deployment:**
-  * Initial build: `vagrant up`
-  * Apply configuration changes: `vagrant provision`
+This project deploys a multi-node local environment. Created using Vagrant, featuring two Flask backend instances, a MariaDB database, and an Nginx reverse proxy. The infrastructure is orchestrated via a Vagrantfile and provisioned using a dedicated bash script (`lb.sh`) to configure the load balancer.

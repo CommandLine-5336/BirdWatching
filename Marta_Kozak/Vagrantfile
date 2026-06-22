@@ -14,6 +14,13 @@ config_data = YAML.safe_load_file(File.join(__dir__, 'config.yaml'))
 Vagrant.configure("2") do |config|
   config.vm.box = config_data['box_name']
 
+  config.ssh.insert_key = false
+  config.ssh.verify_host_key = :accept_new
+  config.ssh.private_key_path = [
+    '~/.ssh/id_rsa',
+    '~/.vagrant.d/insecure_private_key'
+  ]
+
   config_data['vms'].each do |vm_settings|
     config.vm.define vm_settings['name'] do |node|
       node.vm.hostname = vm_settings['name']
@@ -25,6 +32,8 @@ Vagrant.configure("2") do |config|
         vb.cpus = vm_settings['cpus']
         vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       end
+
+      node.vm.provision "shell", path: "provisioning/common.sh"
 
       node.vm.provision "shell" do |s|
         s.path = vm_settings['script']

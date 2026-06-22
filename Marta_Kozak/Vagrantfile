@@ -1,0 +1,60 @@
+require 'yaml'
+
+env = {}
+
+File.readlines(File.join(__dir__, ".env")).each do |line|
+  next if line.strip.empty? || line.start_with?("#")
+
+  key, value = line.strip.split("=", 2)
+  env[key] = value
+end
+
+config_data = YAML.safe_load_file(File.join(__dir__, 'config.yaml'))
+
+Vagrant.configure("2") do |config|
+  config.vm.box = config_data['box_name']
+
+  config.ssh.insert_key = false
+  config.ssh.verify_host_key = :accept_new
+  config.ssh.private_key_path = [
+    '~/.ssh/id_rsa',
+    '~/.vagrant.d/insecure_private_key'
+  ]
+
+  config_data['vms'].each do |vm_settings|
+    config.vm.define vm_settings['name'] do |node|
+      node.vm.hostname = vm_settings['name']
+
+      node.vm.network "private_network", ip: "#{config_data['subnet']}#{vm_settings['ip_suffix']}"
+      
+      node.vm.provider "virtualbox" do |vb|
+        vb.memory = vm_settings['mem']
+        vb.cpus = vm_settings['cpus']
+        vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      end
+
+      node.vm.provision "shell", path: "provisioning/common.sh"
+
+      node.vm.provision "shell" do |s|
+        s.path = vm_settings['script']
+
+        if vm_settings['name'] == 'balancer'
+          subnet = config_data['subnet']
+          s.env = {
+            "WEB01_IP" => "#{subnet}12",
+            "WEB02_IP" => "#{subnet}13"
+          }
+        end
+
+        if vm_settings['name'] == 'db'
+          s.env = {
+            "DB_NAME" => env["DB_NAME"],
+            "DB_USER" => env["DB_USER"],
+            "DB_PASS" => env["DB_PASS"],
+            "DB_ALLOWED_HOST" => "#{config_data["subnet"]}%"
+          }
+        end
+      end
+    end
+  end
+end

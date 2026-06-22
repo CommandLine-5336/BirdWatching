@@ -1,0 +1,23 @@
+require 'yaml'
+
+config_data = YAML.safe_load_file(File.join(__dir__, 'config.yaml'))
+
+Vagrant.configure("2") do |config|
+  config.vm.box = config_data['box_name']
+
+  config_data['vms'].each do |vm_settings|
+    config.vm.define vm_settings['name'] do |node|
+      node.vm.hostname = vm_settings['name']
+
+      node.vm.network "private_network", ip: "#{config_data['subnet']}#{vm_settings['ip_suffix']}"
+      
+      node.vm.provider "virtualbox" do |vb|
+        vb.memory = vm_settings['mem']
+        vb.cpus = vm_settings['cpus']
+        vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      end
+
+      node.vm.provision "shell", path: vm_settings['script']
+    end
+  end
+end

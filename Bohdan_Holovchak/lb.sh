@@ -1,7 +1,6 @@
 #!/bin/bash
 sudo apt update -y
 sudo apt install nginx -y
-sudo systemctl stop nginx
 sudo chmod +x /home/vagrant
 
 cat << 'EOF' > "/etc/nginx/sites-enabled/default"
@@ -27,4 +26,4 @@ server {
     }
 }
 EOF
-sudo systemctl start nginx
+sudo systemctl reload nginx

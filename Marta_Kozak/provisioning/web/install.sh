@@ -9,9 +9,14 @@ ln -sf /etc/nginx/sites-available/flask.conf /etc/nginx/sites-enabled/
 rm -f /etc/nginx/sites-enabled/default
 
 mkdir -p /opt/flask-app
+cp -r /vagrant/app/* /opt/flask-app/
+
 python3 -m venv /opt/flask-app/.venv
-
 /opt/flask-app/.venv/bin/pip install flask
-/opt/flask-app/.venv/bin/python3 -m flask --version
 
+cp /vagrant/provisioning/web/flask.service /etc/systemd/system/
+
+systemctl daemon-reload
+systemctl enable flask
+systemctl start flask
 systemctl restart nginx

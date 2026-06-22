@@ -1,0 +1,14 @@
+{
+  "birds": [
+    {
+      "url": "/static/images/bird1.jpg",
+      "description": "Bright tropical parrot",
+      "location": "Amazon rainforest"
+    },
+    {
+      "url": "/static/images/bird2.jpg",
+      "description": "Songbird of the forest",
+      "location": "North America"
+    }
+  ]
+}

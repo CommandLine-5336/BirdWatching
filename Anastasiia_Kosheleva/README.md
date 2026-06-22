@@ -1,5 +1,3 @@
-﻿# BirdTok Web Application
+# BirdTok Web Application
 
-* Components: Frontend (HTML/CSS), Backend (Flask), Static assets.
-* Scripts: front.sh and back.sh (Gunicorn/Service launch).
-* Execution: sudo bash scripts/front.sh && sudo bash scripts/back.sh
+Deploys a multi-node local environment via Vagrant (featuring an Nginx proxy, two Flask backends, and a MariaDB database) to host the BirdTok app. The infrastructure and application services are orchestrated using a `Vagrantfile` and provisioned via dedicated bash scripts (`lb.sh`, `front.sh`, and `back.sh`).

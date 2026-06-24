@@ -37,7 +37,6 @@ jobs:
           FIX_PYTHON_BLACK: true
           FIX_PYTHON_ISORT: true
           FIX_SQLFLUFF: true
-          SQLFLUFF_CONFIG_FILE:     BirdWatching/.github/workflows/.sqlfluff
           VALIDATE_ARM: false
           VALIDATE_BIOME_FORMAT: false
           VALIDATE_BIOME_LINT: false

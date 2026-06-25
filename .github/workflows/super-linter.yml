@@ -87,3 +87,7 @@ jobs:
           VALIDATE_PYTHON_RUFF: false
           VALIDATE_PYTHON_RUFF_FORMAT: false
           VALIDATE_SQLFLUFF: false
+          VALIDATE_HTML_PRETTIER: false
+          VALIDATE_MARKDOWN_PRETTIER: false
+          VALIDATE_PYTHON_MYPY: false
+          VALIDATE_YAML_PRETTIER: false

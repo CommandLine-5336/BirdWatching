@@ -1,8 +1,8 @@
-﻿#!/bin/bash
+#!/bin/bash
 export DEBIAN_FRONTEND=noninteractive
 
-apt-get update -y && apt-get install nginx -y
+apt-get update -y && apt-get install mariadb-server -y
 
-cp /vagrant/configs/nginx.conf /etc/nginx/sites-available/default
+cp /vagrant/configs/ningx.conf /etc/ningx/sites-available/default
 
-systemctl restart nginx
+systemctl restart ningx

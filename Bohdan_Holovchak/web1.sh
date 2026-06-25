@@ -11,7 +11,7 @@ server {
 
     location /static/ {
         alias /home/vagrant/Bird1/static/;
-    }     
+    }
 
     location / {
         proxy_pass http://localhost:5000;
@@ -23,11 +23,11 @@ server {
 EOF
 git clone https://github.com/Derankatinum/Bird1.git
 cd Bird1
-sudo apt update 
+sudo apt update
 sudo apt install python3-venv -y
 python3 -m venv .venv
 source .venv/bin/activate
-pip install flask 
+pip install flask
 chmod +x /home/vagrant/Bird1
 chmod +x /home/vagrant/Bird1/static
 sudo cat << 'EOF' > /etc/systemd/system/bird1.service

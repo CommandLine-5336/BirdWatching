@@ -3,7 +3,7 @@ name: Lint
 
 on: # yamllint disable-line rule:truthy
   push: null
-  pull_request: 
+  pull_request:
     branches:
       - main
 
@@ -20,9 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
               #checkoutv7
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 #checkoutv7
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
         with:
-          fetch-depth: 0  
+          fetch-depth: 0
           persist-credentials: false
       - name: Super-Linter
               # super-literv V8.7.0
@@ -58,8 +58,6 @@ jobs:
           VALIDATE_KOTLIN: false
           VALIDATE_LATEX: false
           VALIDATE_LUA: false
-          VALIDATE_MARKDOWN: false
-          VALIDATE_MARKDOWN_PRETTIER: false
           VALIDATE_NATURAL_LANGUAGE: false
           VALIDATE_PERL: false
           VALIDATE_PHP: false

@@ -10,13 +10,13 @@ services:
     ssh_port: 22001
     memory: 1024
     cpus: 2
-    script: "Scripts/basic.sh"
+    script: "Scripts/webserver_conf.sh"
   app2:
     ip: 192.168.1.109
     ssh_port: 22002
     memory: 1024
     cpus: 2
-    script: "Scripts/basic.sh"
+    script: "Scripts/webserver_conf.sh"
   mariadb:
     ip: 192.168.1.110
     ssh_port: 22003

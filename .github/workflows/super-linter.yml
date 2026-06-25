@@ -91,3 +91,4 @@ jobs:
           VALIDATE_MARKDOWN_PRETTIER: false
           VALIDATE_PYTHON_MYPY: false
           VALIDATE_YAML_PRETTIER: false
+          VALIDATE_JSON_PRETTIER: false

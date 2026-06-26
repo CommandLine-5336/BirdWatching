@@ -1,0 +1,3 @@
+mariadb_name: "birdwatching"
+mariadb_user: "mariadb_user_here"
+mariadb_password: "mariadb_password_here"

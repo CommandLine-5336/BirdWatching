@@ -1,0 +1,8 @@
+- name: Copy MariaDB config from template
+  ansible.builtin.template:
+    src: custom.cnf.j2
+    dest: "{{ mariadb_config_file }}"
+    owner: root
+    group: root
+    mode: '0644'
+  notify: restart mariadb

@@ -3,7 +3,7 @@ sudo apt update -y
 sudo apt install nginx -y
 sudo chmod +x /home/vagrant
 
-cat << 'EOF' >"/etc/nginx/sites-enabled/default"
+cat <<'EOF' >"/etc/nginx/sites-enabled/default"
 upstream web_app {
     server 192.168.1.11:80;
     server 192.168.1.12:80;

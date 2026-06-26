@@ -5,7 +5,7 @@ apt-get update -y && apt-get install nginx python3 python3-venv -y
 python3 -m venv /opt/venv
 /opt/venv/bin/pip install Flask gunicorn pymysql
 
-cat << 'EOF' >/etc/nginx/sites-available/default
+cat <<'EOF' >/etc/nginx/sites-available/default
 server {
     listen 80;
     location / {
@@ -16,7 +16,7 @@ server {
 EOF
 systemctl restart nginx
 
-cat << 'EOF' >/etc/systemd/system/birdwatcher.service
+cat <<'EOF' >/etc/systemd/system/birdwatcher.service
 [Unit]
 Description=Birdwatcher App
 [Service]

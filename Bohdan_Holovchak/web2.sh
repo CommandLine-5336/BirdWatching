@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo apt update
 sudo apt install nginx -y
-cat << 'EOF' >"/etc/nginx/sites-enabled/default"
+cat <<'EOF' >"/etc/nginx/sites-enabled/default"
 server {
     listen 80 default_server;
     listen [::]:80 default_server;
@@ -30,7 +30,7 @@ source .venv/bin/activate
 pip install flask
 chmod +x /home/vagrant/Bird2
 chmod +x /home/vagrant/Bird2/static
-cat << 'EOF' >/etc/systemd/system/bird2.service
+cat <<'EOF' >/etc/systemd/system/bird2.service
 [Unit]
 Description=Flask Bird2 Application
 After=network.target

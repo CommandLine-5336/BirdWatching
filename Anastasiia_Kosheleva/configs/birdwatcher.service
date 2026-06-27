@@ -5,8 +5,8 @@ After=network.target
 [Service]
 User=root
 WorkingDirectory=/opt/birdwatcher
-Environment="PATH=/opt/birdwatcher/venv/bin"
-ExecStart=/opt/birdwatcher/venv/bin/gunicorn --workers 2 --bind 0.0.0.0:5000 app:app
+Environment="PATH=/opt/venv/bin"
+ExecStart=/opt/venv/bin/gunicorn --workers 2 --bind 0.0.0.0:5000 app:app
 
 [Install]
 WantedBy=multi-user.target

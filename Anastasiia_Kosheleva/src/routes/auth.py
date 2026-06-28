@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for
 from models import db, User
+from werkzeug.security import generate_password_hash, check_password_hash
 
 auth_bp = Blueprint('auth', __name__)
 
@@ -8,16 +9,17 @@ def index():
     error = None
     if request.method == 'POST':
         form_username = request.form.get('username')
+        password = request.form.get('password')
         action = request.form.get('action')
        
-        if not form_username:
-            error = "Username is required!"
-            return render_template('auth.html', error=error)
+        if not form_username or not password:
+            return render_template('auth.html', error="Both fields are required!")
        
         if action == 'register':
             existing_user = User.query.filter_by(login=form_username).first()
             if not existing_user:
-                new_user = User(login=form_username, password="dummy_password")
+                hash_pw = generate_password_hash(password)
+                new_user = User(login=form_username, password=hash_pw)
                 db.session.add(new_user)
                 db.session.flush()
                 db.session.commit()
@@ -26,18 +28,16 @@ def index():
                 session['username'] = new_user.login
                 return redirect(url_for('feed.show_feed'))
             else:
-                error = "Username already taken!"
-                return render_template('auth.html', error=error)
+                return render_template('auth.html', error="Username already taken!")
             
         elif action == 'login':
             user = User.query.filter_by(login=form_username).first()
-            if user:
+            if user and check_password_hash(user.password, password):
                 session['user_id'] = user.id
                 session['username'] = user.login
                 return redirect(url_for('feed.show_feed'))
             else: 
-                error = "User not found! Register first."
-                return render_template('auth.html', error=error)
+                return render_template('auth.html', error="Invalid username or password")
     
     return render_template('auth.html', error=error)
 

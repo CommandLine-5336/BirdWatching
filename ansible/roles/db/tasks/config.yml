@@ -1,6 +1,6 @@
 - name: Copy MariaDB config from template
   ansible.builtin.template:
-    src: custom.cnf.j2
+    src: 99-custom.cnf.j2
     dest: "{{ mariadb_config_file }}"
     owner: root
     group: root

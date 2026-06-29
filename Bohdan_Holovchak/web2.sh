@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo apt update
 sudo apt install nginx -y
-cat << 'EOF' > "/etc/nginx/sites-enabled/default"
+cat <<'EOF' >"/etc/nginx/sites-enabled/default"
 server {
     listen 80 default_server;
     listen [::]:80 default_server;
@@ -11,7 +11,7 @@ server {
 
     location /static/ {
         alias /home/vagrant/Bird2/static/;
-    }     
+    }
 
     location / {
         proxy_pass http://localhost:5000;
@@ -22,15 +22,15 @@ server {
 }
 EOF
 git clone https://github.com/Derankatinum/Bird2.git
-cd Bird2
-sudo apt update 
+cd Bird2 || exit
+sudo apt update
 sudo apt install python3-venv -y
 python3 -m venv .venv
 source .venv/bin/activate
-pip install flask 
+pip install flask
 chmod +x /home/vagrant/Bird2
 chmod +x /home/vagrant/Bird2/static
-sudo cat << 'EOF' > /etc/systemd/system/bird2.service
+cat <<'EOF' >/etc/systemd/system/bird2.service
 [Unit]
 Description=Flask Bird2 Application
 After=network.target

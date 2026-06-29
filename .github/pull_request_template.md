@@ -1,4 +1,4 @@
-## Jira Ticket: [CL-XX]
+# Jira Ticket: [CL-XX]
 ## PR Type
 What kind of changes does this PR introduce?
 

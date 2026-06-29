@@ -1,8 +1,0 @@
-server {
-    listen 80 default_server;
-
-    location / {
-        include proxy_params;
-        proxy_pass http://unix:/home/vagrant/BirdWatchingApp/BirdWatchingApp.sock;
-    }
-}

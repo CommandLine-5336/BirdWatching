@@ -1,0 +1,34 @@
+{
+  "birds": [
+    {
+      "description": "Bright tropical parrot",
+      "location": "Amazon rainforest",
+      "url": "/static/images/bird1.jpg"
+    },
+    {
+      "description": "Songbird of the forest",
+      "location": "North America",
+      "url": "/static/images/bird2.jpg"
+    },
+    {
+      "description": "Majestic eagle soaring high",
+      "location": "Rocky Mountains",
+      "url": "/static/images/bird3.jpg"
+    },
+    {
+      "description": "Colorful flamingo by the lake",
+      "location": "South America",
+      "url": "/static/images/bird4.jpg"
+    },
+    {
+      "description": "Elegant swan on the water",
+      "location": "Northern Europe",
+      "url": "/static/images/bird5.jpg"
+    },
+    {
+      "description": "Small hummingbird feeding on flowers",
+      "location": "Central America",
+      "url": "/static/images/bird6.jpg"
+    }
+  ]
+}

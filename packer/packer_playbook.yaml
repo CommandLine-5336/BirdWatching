@@ -26,6 +26,11 @@
        curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
      args:
        creates: /usr/local/bin/trivy
+   - name: create trivy directory
+     ansible,builtin.file:
+       path: /var/log/trivy
+       state: directory
+       mode: "0755"
    - name: Run trivy scan regularly
      ansible.builtin.cron:
        name: "Run trivy scan"
@@ -37,7 +42,7 @@
          --severity HIGH,CRITICAL
          --timeout 10m
          --format table
-         --output "/home/$(hostname)/$(hostname)_trivy_scan_$(date +\%Y\%m\%d_\%H\%M).txt"
+         --output "/var/log/trivy/$(hostname)_trivy_scan_$(date +\%Y\%m\%d_\%H\%M).txt"
          /
    - name: Add ssh keys for the entire team
      ansible.posix.authorized_key:

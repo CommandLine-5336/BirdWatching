@@ -1,3 +1,8 @@
+"""
+Docstring about the app
+
+"""
+
 import os
 
 from flask import Flask, render_template
@@ -11,6 +16,10 @@ location = os.getenv("LOCATION")
 
 @app.route("/")
 def index():
+    """
+    Default function
+
+    """
     return render_template(
         "index.html", photo=photo, description=description, location=location
     )

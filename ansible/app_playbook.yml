@@ -1,9 +1,4 @@
 ---
-- name: Configure MariaDB Server
-  hosts: db
-  become: yes
-  roles:
-  - role: db
 - name: Configure Web servers
   hosts: web
   become: yes

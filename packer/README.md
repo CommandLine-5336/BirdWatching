@@ -7,7 +7,7 @@
 
 ## Installing / Getting started
 
-* Packer should be installed https://developer.hashicorp.com/packer/install
+* [Packer](https://developer.hashicorp.com/packer/install) should be installed
 * After installing packer, `cd` into the folder with the pkr.hcl file
 * Inside the folder do `packer init` in bash
 * `packer fmt ./{FILE_NAME.pkr.hcl}` and `packer validate ./{FILE_NAME.pkr.hcl}`

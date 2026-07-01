@@ -1,6 +1,8 @@
+# pylint: disable=too-few-public-methods
 """Database models module."""
-
 from flask_sqlalchemy import SQLAlchemy
+
+#
 
 db = SQLAlchemy()
 

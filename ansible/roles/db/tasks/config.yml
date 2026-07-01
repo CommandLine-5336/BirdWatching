@@ -9,7 +9,7 @@
 - name: Deploy custom configuration
   ansible.builtin.template:
     src: 99-custom.cnf.j2
-    dest: "{{ mariadb_config_file }}"
+    dest: "{{ db_maria_config_file }}"
     owner: root
     group: root
     mode: '0644'

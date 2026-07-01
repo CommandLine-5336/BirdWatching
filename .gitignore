@@ -15,8 +15,19 @@ env/
 .Trashes
 ehthumbs.db
 Thumbs.db
+src/images/filerldb2/
+src/images/*.dat
+src/images/*.idx
+src/images/*.vif
+src/images/m9333/
+src/images/vol_dir.uuid
+src/weed.exe
+.env
+s3.json
 
 .vscode/
 .idea/
 *.swp
 *.swo
+
+

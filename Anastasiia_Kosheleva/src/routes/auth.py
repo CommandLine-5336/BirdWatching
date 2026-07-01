@@ -1,8 +1,8 @@
 """Authentication routes for login and registration."""
 
 from flask import Blueprint, redirect, render_template, request, session, url_for
-from werkzeug.security import check_password_hash, generate_password_hash
 from models import User, db
+from werkzeug.security import check_password_hash, generate_password_hash
 
 auth_bp = Blueprint("auth", __name__)
 

@@ -28,8 +28,9 @@ class Post(db.Model):
 
 
 class Like(db.Model):
-    __tablename__ = "like"
     """Like interaction model."""
+
+    __tablename__ = "like"
     user_id = db.Column(
         db.Integer, db.ForeignKey("user.id", ondelete="CASCADE"), primary_key=True
     )

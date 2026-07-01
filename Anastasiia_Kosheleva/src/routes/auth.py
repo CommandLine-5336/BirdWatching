@@ -1,6 +1,8 @@
 """Authentication routes for login and registration."""
+
 from flask import Blueprint, redirect, render_template, request, session, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
+
 from models import User, db
 
 auth_bp = Blueprint("auth", __name__)
@@ -39,9 +41,7 @@ def index():
                 session["user_id"] = user.id
                 session["username"] = user.login
                 return redirect(url_for("feed.show_feed"))
-            return render_template(
-                    "auth.html", error="Invalid username or password"
-                )
+            return render_template("auth.html", error="Invalid username or password")
 
     return render_template("auth.html", error=error)
 

@@ -28,7 +28,6 @@ Vagrant.configure("2") do |config|
       if vm['provision_type'] == 'ansible'
         node.vm.provision "ansible" do |ansible|
           ansible.playbook = vm['playbook']
-          ansible.extra_vars = { mariadb_allowed_host: "#{config_data['subnet']}%" }
           ansible.groups = all_groups
         end
       end

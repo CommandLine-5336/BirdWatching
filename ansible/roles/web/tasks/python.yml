@@ -1,4 +1,4 @@
-- name: Dependencies instalation
+- name: Dependencies installation
   ansible.builtin.pip:
     requirements: "{{ web_app_dir }}/BirdWatchingApp/requirements.txt"
     virtualenv: "{{ web_app_dir }}/BirdWatchingApp/venv"

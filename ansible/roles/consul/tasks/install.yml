@@ -27,6 +27,7 @@
     state: directory
     owner: "{{ consul_user }}"
     group: "{{ consul_group }}"
+    mode: '0755'
   loop:
   - "{{ consul_data_dir }}"
   - "{{ consul_config_dir }}"

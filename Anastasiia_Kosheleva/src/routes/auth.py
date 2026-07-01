@@ -1,5 +1,5 @@
 """Authentication routes for login and registration."""
-from flask import (Blueprint, redirect, render_template, request, session, url_for)
+from flask import Blueprint, redirect, render_template, request, session, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
 from models import User, db
 
@@ -30,17 +30,16 @@ def index():
                 session["user_id"] = new_user.id
                 session["username"] = new_user.login
                 return redirect(url_for("feed.show_feed"))
-            else:
-                return render_template("auth.html", error="Username already taken!")
 
-        elif action == "login":
+            return render_template("auth.html", error="Username already taken!")
+
+        if action == "login":
             user = User.query.filter_by(login=form_username).first()
             if user and check_password_hash(user.password, password):
                 session["user_id"] = user.id
                 session["username"] = user.login
                 return redirect(url_for("feed.show_feed"))
-            else:
-                return render_template(
+            return render_template(
                     "auth.html", error="Invalid username or password"
                 )
 

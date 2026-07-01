@@ -1,4 +1,5 @@
 """Feed routes for displaying bird posts."""
+
 from flask import Blueprint, redirect, render_template, session, url_for
 
 feed_bp = Blueprint("feed", __name__)

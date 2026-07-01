@@ -32,9 +32,6 @@ def create_app():
 
     db.init_app(app)
 
-    from routes.auth import auth_bp
-    from routes.feed import feed_bp
-
     app.register_blueprint(auth_bp)
     app.register_blueprint(feed_bp)
 

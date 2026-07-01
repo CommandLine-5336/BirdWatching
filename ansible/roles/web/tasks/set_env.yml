@@ -2,8 +2,8 @@
 - name: Create .env
   ansible.builtin.template:
     src: templates/app.env.j2
-    dest: "{{ app_dir }}/BirdWatchingApp/.env"
-    owner: "{{ user }}"
-    group: "{{ user }}"
+    dest: "{{ web_app_dir }}/BirdWatchingApp/.env"
+    owner: "{{ web_user }}"
+    group: "{{ web_user }}"
     mode: "0600"
   notify: restart gunicorn

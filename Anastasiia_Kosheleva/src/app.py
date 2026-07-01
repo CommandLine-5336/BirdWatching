@@ -1,5 +1,4 @@
 """Application factory and initialization module."""
-
 import os
 
 from dotenv import load_dotenv
@@ -14,31 +13,33 @@ load_dotenv()
 
 def create_app():
     """Create, configure and return the Flask application instance."""
-    app = Flask(__name__)
-    app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "default_dev_key")
+    flask_app = Flask(__name__)
+    flask_app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "default_dev_key")
 
     db_user = os.getenv("DB_USER")
     db_password = os.getenv("DB_PASSWORD")
     db_host = os.getenv("DB_HOST")
     db_name = os.getenv("DB_NAME")
 
-    app.config["SQLALCHEMY_DATABASE_URI"] = (
+    flask_app.config["SQLALCHEMY_DATABASE_URI"] = (
         f"mysql+pymysql://{db_user}:{db_password}@{db_host}/{db_name}"
     )
-    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+    flask_app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-    app.config["UPLOAD_FOLDER"] = os.path.join(app.root_path, "static/images")
-    os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
+    flask_app.config["UPLOAD_FOLDER"] = os.path.join(
+        flask_app.root_path, "static/images"
+    )
+    os.makedirs(flask_app.config["UPLOAD_FOLDER"], exist_ok=True)
 
-    db.init_app(app)
+    db.init_app(flask_app)
 
-    app.register_blueprint(auth_bp)
-    app.register_blueprint(feed_bp)
+    flask_app.register_blueprint(auth_bp)
+    flask_app.register_blueprint(feed_bp)
 
-    with app.app_context():
+    with flask_app.app_context():
         db.create_all()
 
-    return app
+    return flask_app
 
 
 app = create_app()

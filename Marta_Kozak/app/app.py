@@ -1,3 +1,9 @@
+"""
+
+Docstring about the app
+
+"""
+
 import json
 import os
 import random
@@ -17,6 +23,10 @@ with open(JSON_PATH, "r", encoding="utf-8") as f:
 
 @app.route("/")
 def index():
+    """
+    default function
+
+    """
     hostname = socket.gethostname()
     selected_bird = random.choice(BIRDS)
 

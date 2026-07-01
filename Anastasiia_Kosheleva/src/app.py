@@ -3,7 +3,6 @@ import os
 
 from dotenv import load_dotenv
 from flask import Flask
-
 from models import db
 from routes.auth import auth_bp
 from routes.feed import feed_bp
